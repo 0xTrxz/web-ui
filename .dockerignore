@@ -1,2 +1,50 @@
+# Development and environment files
+.git
+.github
+.gitignore
+.env
+.env.*
+.venv
+venv
+env
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.log
+
+# Data and temp directories
 data
 tmp
+temp
+.cache
+
+# Docker files
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Documentation
+README.md
+LICENSE
+SECURITY.md
+docs
+
+# IDEs and editors
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# Testing
+tests
+test
+.coverage
+htmlcov
+
+# Build and distribution
+dist
+build
+*.egg-info

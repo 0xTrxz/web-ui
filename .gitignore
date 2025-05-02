@@ -188,3 +188,7 @@ data/
 # For Config Files (Current Settings)
 .config.pkl
 *.pdf
+
+# Railway specific files
+.railway/
+railway-output/
