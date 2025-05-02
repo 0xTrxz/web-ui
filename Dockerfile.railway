@@ -80,12 +80,13 @@ ENV CHROME_PERSISTENT_SESSION=true
 ENV RESOLUTION_WIDTH=1920
 ENV RESOLUTION_HEIGHT=1080
 ENV PORT=7788
+ENV HEALTH_PORT=8080
 
 # Ensure correct file permissions
 RUN chmod -R 755 /app
 
 # Expose ports
-EXPOSE 7788 6080 5901 9222
+EXPOSE 7788 6080 5901 9222 8080
 
 # Default command
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"] 
