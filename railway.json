@@ -9,10 +9,6 @@
     "startCommand": "/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10,
-    "healthcheckPath": "/",
-    "healthcheckPort": 8080,
-    "healthcheckTimeout": 60,
-    "healthcheckInterval": 120,
-    "healthcheckMaxRetries": 5
+    "healthcheck": false
   }
 } 
