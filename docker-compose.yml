@@ -11,6 +11,7 @@ services:
       - "6080:6080"  # noVNC web interface
       - "5901:5901"  # VNC port
       - "9222:9222"  # Chrome remote debugging port
+      - "8080:8080"  # Health check port
     environment:
       - OPENAI_ENDPOINT=${OPENAI_ENDPOINT:-https://api.openai.com/v1}
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
@@ -45,10 +46,14 @@ services:
       - VNC_PASSWORD=${VNC_PASSWORD:-vncpassword}
       - CHROME_DEBUGGING_PORT=9222
       - CHROME_DEBUGGING_HOST=localhost
+      - PORT=7788
+      - HEALTH_PORT=8080
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
     restart: unless-stopped
-    shm_size: '2gb'
+    shm_size: '4gb'
+    mem_limit: '8g'
+    memswap_limit: '12g'
     cap_add:
       - SYS_ADMIN
     security_opt:
@@ -56,7 +61,7 @@ services:
     tmpfs:
       - /tmp
     healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "5901"]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 10s
       timeout: 5s
       retries: 3
