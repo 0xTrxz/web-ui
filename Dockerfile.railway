@@ -84,9 +84,10 @@ ENV HEALTH_PORT=8080
 
 # Ensure correct file permissions
 RUN chmod -R 755 /app
+RUN chmod +x /app/entrypoint.sh
 
 # Expose ports
-EXPOSE 7788 6080 5901 9222 8080
+EXPOSE ${PORT} 6080 5901 9222 ${HEALTH_PORT}
 
 # Default command
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"] 
+CMD ["bash", "entrypoint.sh"] 
